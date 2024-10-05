@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-c
+  namespace: micro-calculations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-c
+  template:
+    metadata:
+      labels:
+        app: example-c
+    spec:
+      containers:
+        - name: example-c-container
+          image: app-example-c
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-c-service
+  namespace: micro-calculations
+spec:
+  selector:
+    app: example-c
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: http
+  type: ClusterIP

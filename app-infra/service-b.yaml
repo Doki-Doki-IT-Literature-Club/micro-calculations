@@ -1,0 +1,40 @@
+# Deployment for example-b (internal only)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-b
+  namespace: micro-calculations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-b
+  template:
+    metadata:
+      labels:
+        app: example-b
+    spec:
+      containers:
+        - name: example-b-container
+          image: app-example-b
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+---
+# Service for internal communication for example-b
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-b-service
+  namespace: micro-calculations
+spec:
+  selector:
+    app: example-b
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: http
+  type: ClusterIP
+---
+
