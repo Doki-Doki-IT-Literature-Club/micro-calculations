@@ -1,0 +1,1 @@
+minikube service kiali -n istio-system
