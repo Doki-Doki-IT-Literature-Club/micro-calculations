@@ -1,0 +1,1 @@
+minikube service prometheus -n istio-system

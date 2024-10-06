@@ -1,0 +1,1 @@
+minikube service grafana -n istio-system

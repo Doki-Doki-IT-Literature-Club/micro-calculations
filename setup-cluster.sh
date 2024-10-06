@@ -1,6 +1,5 @@
 kubectl create namespace micro-calculations
-minikube addons enable ingress
-
+# minikube addons enable ingress
 
 # istio
 istioctl install --set profile=demo -y
