@@ -12,5 +12,3 @@ for dir in "$SERVICES_DIR"/*/; do
         echo "No build.sh found in $dir, skipping..."
     fi
 done
-
-./apply.sh
